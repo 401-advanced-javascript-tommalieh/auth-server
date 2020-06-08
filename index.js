@@ -5,8 +5,8 @@ const mongoose = require('mongoose');
 const server = require('./src/server.js');
 
 mongoose.connect(process.env.DATABASE_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 server.start(process.env.PORT);
