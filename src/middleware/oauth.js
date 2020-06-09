@@ -46,6 +46,7 @@ async function exchangeTokenForUser(token) {
     .set('Authorization', `token ${token}`);
 
   let user = userData.body;
+  console.log(user);
   return user;
 }
 
