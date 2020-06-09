@@ -4,12 +4,14 @@ const express = require('express');
 const basicAuth = require('../middleware/basic.js');
 const users = require('./model/user-model.js');
 const oauth = require('../middleware/oauth.js');
+const bearerAuth = require('../middleware/bearer.js');
 const router = express.Router();
 
 router.get('/oauth', oauth, oauthHandler);
 router.post('/signup', signUpHandler);
 router.post('/signin', basicAuth, signInHandler);
 router.get('/users', basicAuth, listUsersHandler);
+router.get('/secret', bearerAuth, secretHandler);
 router.post('/test', (req, res) => {
   users.create(req.body).then( result => {
     res.json(result);
@@ -41,6 +43,11 @@ function listUsersHandler(req, res) {
 function oauthHandler (req, res) {
   console.log('hello from the route handler');
   res.json({ token: req.token });
+}
+
+function secretHandler (req, res) {
+  console.log('hello from the route handler');
+  res.json({ token: req.user });
 }
 
 module.exports = router;
