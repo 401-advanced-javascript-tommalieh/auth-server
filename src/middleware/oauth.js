@@ -52,7 +52,7 @@ async function exchangeTokenForUser(token) {
 
 async function storeUserToDataBase(user) {
   const newUserRecord = {
-    username: user.username,
+    username: user.login,
     password: '1234',
   };
   let storedUser = users.create(newUserRecord);
