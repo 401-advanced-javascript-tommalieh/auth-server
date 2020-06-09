@@ -15,7 +15,7 @@ module.exports = (req, res ,next) => {
       req.token = users.generateToken(validUser);
       next();
     }).catch(err => {
-      next('Wrong Password');
+      next('Wrong Password or username');
     });
   }
 };
