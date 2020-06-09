@@ -6,6 +6,7 @@ const users = require('../auth/model/user-model.js');
 module.exports = async (req, res, next) => {
   try {
     console.log('hello from the middleware');
+    console.log(req.query.code);
     const code = req.query.code;
         
     let accessToken = await exchangeCodeForToken(code);
