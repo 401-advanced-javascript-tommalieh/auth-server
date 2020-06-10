@@ -8,7 +8,15 @@ const SECRET = process.env.SECRET || 'TOMMALIEH';
 class User {
   constructor() {
     this.schema = schema;
+    this.roles = {
+      user: ['read'],
+      writer: ['read', 'create'],
+      editor: ['read', 'create', 'update'],
+      admin: ['read', 'create', 'update', 'delete'],
+    };
+      
   }
+  
 
   read() {
     return this.schema.find({});
@@ -67,7 +75,12 @@ class User {
 
   generateToken(user) {
     try {
-      const token = jwt.sign({ username: user.username }, SECRET, {expiresIn: 900});
+      
+      let userData = {
+        username: user.username,
+        role: user.role,
+      };
+      const token = jwt.sign(userData, SECRET, {expiresIn: 900});
       return token;
     } catch (err) {
       return err;
