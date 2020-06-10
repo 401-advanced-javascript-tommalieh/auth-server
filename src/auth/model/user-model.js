@@ -8,7 +8,15 @@ const SECRET = process.env.SECRET || 'TOMMALIEH';
 class User {
   constructor() {
     this.schema = schema;
+    this.roles = {
+      user: ['read'],
+      writer: ['read', 'create'],
+      editor: ['read', 'create', 'update'],
+      admin: ['read', 'create', 'update', 'delete'],
+    };
+      
   }
+  
 
   read() {
     return this.schema.find({});
@@ -49,11 +57,32 @@ class User {
     }
   }
 
+  async authenticateBearerToken(bearerToken) {
+    try {
+      const validUser = await jwt.verify(bearerToken, SECRET);
+      const isUserInDb = await this.schema.findOne({ username: validUser.username });
+      if (isUserInDb) {
+        
+        return Promise.resolve(validUser);
+      }
+      else {
+        return Promise.reject('user not found');
+      }
+    }catch(err) {
+      return Promise.reject(err.message);
+    }
+  }
+
   generateToken(user) {
-    try{
-      const token = jwt.sign({ username: user.username }, SECRET);
+    try {
+      
+      let userData = {
+        username: user.username,
+        role: user.role,
+      };
+      const token = jwt.sign(userData, SECRET, {expiresIn: 900});
       return token;
-    }catch (err) {
+    } catch (err) {
       return err;
     }
   }

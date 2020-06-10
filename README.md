@@ -1,4 +1,4 @@
-# LAB - Class 11
+# LAB - Class 14
 
 ## Topic: Auth Server
 
@@ -6,7 +6,7 @@
 
 ### Links and Resources
 
-- [Submission PR](https://github.com/401-advanced-javascript-tommalieh/auth-server/pull/1)
+- [Submission PR](https://github.com/401-advanced-javascript-tommalieh/auth-server/pull/5)
 
 ### Setup
 
@@ -14,13 +14,13 @@
 
 - e.g.
 - `nodemon`
-- `get(http http://localhost:3000/users/).set({Authorization: username:password})`
+- `get(http https://class12-oauth.herokuapp.com//users/).set({Authorization: username:password})`
 
 
 #### Tests
 
 - Visual tests were preformed
-- Jest and lint tests were skipped for this class
+- Jest and lint tests were preformed for this class
 
 #### UML
 
