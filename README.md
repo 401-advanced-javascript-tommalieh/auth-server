@@ -1,4 +1,4 @@
-# LAB - Class 13
+# LAB - Class 14
 
 ## Topic: Auth Server
 
@@ -6,7 +6,7 @@
 
 ### Links and Resources
 
-- [Submission PR](https://github.com/401-advanced-javascript-tommalieh/auth-server/pull/4)
+- [Submission PR](https://github.com/401-advanced-javascript-tommalieh/auth-server/pull/5)
 
 ### Setup
 

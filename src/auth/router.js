@@ -5,7 +5,6 @@ const basicAuth = require('../middleware/basic.js');
 const users = require('./model/user-model.js');
 const oauth = require('../middleware/oauth.js');
 const bearerAuth = require('../middleware/bearer.js');
-const permissionsAuth = require('../middleware/permission.js');
 const router = express.Router();
 
 router.get('/oauth', oauth, oauthHandler);
@@ -13,18 +12,6 @@ router.post('/signup', signUpHandler);
 router.post('/signin', basicAuth, signInHandler);
 router.get('/users', basicAuth, listUsersHandler);
 router.get('/secret', bearerAuth, secretHandler);
-
-
-
-// router.get('/read', bearerAuth, permissionsAuth('read'), permissionsAccessHandler);
-// router.post('/add', bearerAuth, permissionsAuth('create'), permissionsAccessHandler);
-// router.put('/change', bearerAuth, permissionsAuth('update'), permissionsAccessHandler);
-// router.delete('/remove', bearerAuth, permissionsAuth('delete'), permissionsAccessHandler);
-
-// function permissionsAccessHandler(req, res){
-//   res.status(200).send(`Authorized to ${req.permission}`);
-// }
-
 
 
 router.post('/test', (req, res) => {
